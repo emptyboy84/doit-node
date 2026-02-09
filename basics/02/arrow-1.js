@@ -6,3 +6,4 @@
 // };
 
 // 화살표 함수
+let arrow = () => '안녕하세요'; console.log(arrow());
