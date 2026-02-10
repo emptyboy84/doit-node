@@ -1,0 +1,25 @@
+{
+  "name": "contacts-manager",
+  "version": "1.0.0",
+  "description": "simple contact manager",
+  "homepage": "https://github.com/emptyboy84/doit-node#readme",
+  "bugs": {
+    "url": "https://github.com/emptyboy84/doit-node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emptyboy84/doit-node.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
