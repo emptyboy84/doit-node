@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
-
+const dbConnect = require("./config/dbconnect");
 const port = 3000;
+
+//db 연결
+dbConnect();
 
 app.get("/", (req, res) => {
    res.status(200);
