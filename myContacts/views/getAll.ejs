@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Contact Manager - All Contacts</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <style>
+      :root {
+         --primary-color: #4a90e2;
+         --bg-color: #f4f7f6;
+         --text-color: #333;
+         --card-bg: #fff;
+      }
+
+      body {
+         font-family: 'Inter', system-ui, -apple-system, sans-serif;
+         background-color: var(--bg-color);
+         color: var(--text-color);
+         margin: 0;
+         padding: 2rem;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+
+      h1 {
+         color: var(--primary-color);
+         margin-bottom: 2rem;
+         display: flex;
+         align-items: center;
+         gap: 0.5rem;
+      }
+
+      .container {
+         width: 100%;
+         max-width: 800px;
+      }
+
+      .contact-list {
+         list-style: none;
+         padding: 0;
+      }
+
+      .contact-card {
+         background: var(--card-bg);
+         padding: 1.5rem;
+         border-radius: 12px;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+         margin-bottom: 1rem;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .contact-card:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-info h3 {
+         margin: 0 0 0.25rem 0;
+         font-size: 1.25rem;
+      }
+
+      .contact-info p {
+         margin: 0;
+         color: #666;
+         font-size: 0.9rem;
+      }
+
+      .contact-actions {
+         display: flex;
+         gap: 1rem;
+      }
+
+      .btn {
+         text-decoration: none;
+         color: #666;
+         transition: color 0.2s;
+      }
+
+      .btn:hover {
+         color: var(--primary-color);
+      }
+
+      .empty-state {
+         text-align: center;
+         padding: 3rem;
+         color: #888;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <h1>
+         <i class="fa-solid fa-address-book"></i>
+         Contact Manager
+      </h1>
+
+      <ul class="contact-list">
+         <% if (locals.contacts && contacts.length> 0) { %>
+            <% contacts.forEach(contact=> { %>
+               <li class="contact-card">
+                  <div class="contact-info">
+                     <h3>
+                        <%= contact.name %>
+                     </h3>
+                     <p><i class="fa-solid fa-envelope"></i>
+                        <%= contact.email %>
+                     </p>
+                     <p><i class="fa-solid fa-phone"></i>
+                        <%= contact.phone %>
+                     </p>
+                  </div>
+                  <div class="contact-actions">
+                     <a href="/contacts/<%= contact._id %>" class="btn" title="View"><i class="fa-solid fa-eye"></i></a>
+                     <a href="#" class="btn" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                     <a href="#" class="btn" title="Delete"><i class="fa-solid fa-trash"></i></a>
+                  </div>
+               </li>
+               <% }) %>
+                  <% } else { %>
+                     <div class="empty-state">
+                        <i class="fa-solid fa-users-slash fa-3x"></i>
+                        <p>No contacts found.</p>
+                     </div>
+                     <% } %>
+      </ul>
+   </div>
+</body>
+
+</html>

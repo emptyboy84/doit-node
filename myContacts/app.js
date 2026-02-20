@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const dbConnect = require("./config/dbconnect");
 const port = 3000;
@@ -6,9 +7,12 @@ const port = 3000;
 //db 연결
 dbConnect();
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 app.get("/", (req, res) => {
    res.status(200);
-   res.send("Hello Node!");
+   res.render("getAll", { contacts });
 });
 
 app.use(express.json());
